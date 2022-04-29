@@ -27,9 +27,9 @@ Draw
 
 */
 
-const ROCK = "rock";
-const PAPER = "paper";
-const SCISSORS = "scissors";
+const ROCK = "ROCK";
+const PAPER = "PAPER";
+const SCISSORS = "SCISSORS";
 
 // let playerMove = PAPER;
 // let computerMove = ROCK;
@@ -75,3 +75,34 @@ function getWinner(playerMove, computerMove) {
 
 let result = getWinner(ROCK, PAPER);
 console.log(result);
+
+// Task 3
+/* 
+- Use prompt to get a value for player from the user.
+- Call function with that value as the player move 
+    and the hard-coded computer move
+-  Display result using alert 
+- Considered complete when user can input any player move 
+    and get correct result
+
+How to get user input for player move
+
+- Create a variable which stores user prompt data;
+- Question: Please enter one move: ROCK, PAPER or SCISSORS.
+        Conditions for Prompt
+        - Force user input to uppercase
+        - Remove spaces from the string
+        - Reject any incorrect spellings
+        - Prompt user for input again 
+        - Loop this until correct input is given
+- Call function with user prompt variable and computer variable
+- Display result using alert (1, 0 or -1)
+
+*/
+
+let userInput = prompt(
+  "Please type one move: ROCK, PAPER or SCISSORS.",
+  "ROCK"
+);
+
+console.log(userInput);
