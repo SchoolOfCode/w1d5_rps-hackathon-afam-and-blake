@@ -92,23 +92,77 @@ How to get user input for player move
         Conditions for Prompt
         - Edit users input string to uppercase
         - Remove spaces from the string
-        - Reject any incorrect spellings
-        - Prompt user for input again 
-        - Loop this until correct input is given
+        
+
+        Loop Condition
+        - Loop runs until UserInput is spelt correctly
+        - Each iteration will prompt user for input again.
+        
+        Using do-while loops
+
+        The do...while statement creates a loop that executes a specified statement until the test condition evaluates to false. 
+        The condition is evaluated after executing the statement, resulting in the specified statement executing at least once.
+
+        do {
+            this code block will run before condition evaluated
+            then will run again if the test condition is true
+        } while (condition entered is true)
+
+
+        Pseudo code do while 
+        do {
+            prompt user for userInput
+        } while (while spelling is incorrect)
+        what is true while the spelling is incorrect:
+        - The spelling is incorrect if userInput is not equal to ROCK, PAPER or SCISSORS
+        
+       -  userInput ===  ROCK
+
 - Call function with user prompt variable and computer variable
 - Display result using alert (1, 0 or -1)
 
+
+
+
 */
 
-let userInput = prompt(
-  "Please type one move in capital letters: ROCK, PAPER or SCISSORS.",
-  "ROCK"
-)
-  .toUpperCase()
-  .split(" ")
-  .join("");
-console.log(userInput);
+let userInput;
 
-let computerMove = PAPER;
-let taskThreeResult = getWinner(userInput, computerMove);
-console.log(taskThreeResult);
+do {
+  userInput = prompt(
+    "Please type one move in capital letters: ROCK, PAPER or SCISSORS."
+  );
+  userInput = userInput.toUpperCase().split(" ").join("");
+  console.log(userInput);
+  console.log(` strict eqaulity operator test ${userInput === ROCK}`);
+  console.log(`strict inequlity operator test ${userInput !== ROCK}`);
+} while (userInput !== ROCK && userInput !== PAPER && userInput !== SCISSORS);
+
+// do {
+//   let userInput = prompt(
+//     "Please type one move in capital letters: ROCK, PAPER or SCISSORS.",
+//     "ROCK"
+//   )
+//     .toUpperCase()
+//     .split(" ")
+//     .join("");
+//   console.log(userInput);
+//   if (userInput === ROCK || userInput === PAPER || userInput === SCISSORS) {
+//     break;
+//   }
+// } while (userInput !== ROCK || userInput !== PAPER || userInput !== SCISSORS);
+
+// while (userInput === ROCK || PAPER || SCISSORS) {
+//   let userInput = prompt(
+//     "Please type one move in capital letters: ROCK, PAPER or SCISSORS.",
+//     "ROCK"
+//   );
+
+//   userInput.toUpperCase().split(" ").join("");
+//   console.log(userInput);
+// }
+
+// console.log(userInput);
+// let computerMove = PAPER;
+// let taskThreeResult = getWinner(userInput, computerMove);
+// console.log(taskThreeResult);
