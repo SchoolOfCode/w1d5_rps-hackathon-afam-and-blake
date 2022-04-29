@@ -14,7 +14,6 @@ Draw
     if cMove = Paper and Pmove = Paper,
     if cMove = Scissors and Pmove = Scissors
 
-
     Player Wins 
      if pMove = Rock and Cmove = Scissors or 
      if pMove = Paper and Cmove = Rock or
@@ -32,17 +31,47 @@ const ROCK = "rock";
 const PAPER = "paper";
 const SCISSORS = "scissors";
 
-let playerMove = PAPER;
-let computerMove = ROCK;
+// let playerMove = PAPER;
+// let computerMove = ROCK;
 
-if (playerMove === computerMove) {
-  console.log("Its a draw!!");
-} else if (
-  (playerMove === ROCK && computerMove === SCISSORS) ||
-  (playerMove === PAPER && computerMove === ROCK) ||
-  (playerMove === SCISSORS && computerMove === PAPER)
-) {
-  console.log("Player Wins!");
-} else {
-  console.log("Computer Wins!");
+// if (playerMove === computerMove) {
+//   console.log("Its a draw!!");
+// } else if (
+//   (playerMove === ROCK && computerMove === SCISSORS) ||
+//   (playerMove === PAPER && computerMove === ROCK) ||
+//   (playerMove === SCISSORS && computerMove === PAPER)
+// ) {
+//   console.log("Player Wins!");
+// } else {
+//   console.log("Computer Wins!");
+// }
+
+// TASK 2
+/* 
+- Create function using the if/else statements
+- Use our variables as function parameters for the moves
+- Do not print result to console
+- instead, return 1 if player wins
+  0 for draw
+  -1 if computer wins
+
+- function should be able to return any permutation of moves.
+- console.log result variable to test it
+*/
+
+function getWinner(playerMove, computerMove) {
+  if (playerMove === computerMove) {
+    return 0;
+  } else if (
+    (playerMove === ROCK && computerMove === SCISSORS) ||
+    (playerMove === PAPER && computerMove === ROCK) ||
+    (playerMove === SCISSORS && computerMove === PAPER)
+  ) {
+    return 1;
+  } else {
+    return -1;
+  }
 }
+
+let result = getWinner(ROCK, PAPER);
+console.log(result);
