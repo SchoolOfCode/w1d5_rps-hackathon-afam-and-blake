@@ -74,7 +74,7 @@ function getWinner(playerMove, computerMove) {
 }
 
 let result = getWinner(ROCK, PAPER);
-console.log(result);
+// console.log(result);
 
 // Task 3
 /* 
@@ -90,7 +90,7 @@ How to get user input for player move
 - Create a variable which stores user prompt data;
 - Question: Please enter one move: ROCK, PAPER or SCISSORS.
         Conditions for Prompt
-        - Force user input to uppercase
+        - Edit users input string to uppercase
         - Remove spaces from the string
         - Reject any incorrect spellings
         - Prompt user for input again 
@@ -100,9 +100,12 @@ How to get user input for player move
 
 */
 
-let userInput = prompt(
-  "Please type one move: ROCK, PAPER or SCISSORS.",
-  "ROCK"
-);
-
+let userInput = prompt("Please type one move: ROCK, PAPER or SCISSORS.", "ROCK")
+  .toUpperCase()
+  .split(" ")
+  .join("");
 console.log(userInput);
+
+let computerMove = PAPER;
+let taskThreeResult = getWinner(userInput, computerMove);
+console.log(taskThreeResult);
