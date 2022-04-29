@@ -100,7 +100,10 @@ How to get user input for player move
 
 */
 
-let userInput = prompt("Please type one move: ROCK, PAPER or SCISSORS.", "ROCK")
+let userInput = prompt(
+  "Please type one move in capital letters: ROCK, PAPER or SCISSORS.",
+  "ROCK"
+)
   .toUpperCase()
   .split(" ")
   .join("");
