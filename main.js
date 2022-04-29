@@ -138,30 +138,6 @@ do {
   console.log(`strict inequlity operator test ${userInput !== ROCK}`);
 } while (userInput !== ROCK && userInput !== PAPER && userInput !== SCISSORS);
 
-// do {
-//   let userInput = prompt(
-//     "Please type one move in capital letters: ROCK, PAPER or SCISSORS.",
-//     "ROCK"
-//   )
-//     .toUpperCase()
-//     .split(" ")
-//     .join("");
-//   console.log(userInput);
-//   if (userInput === ROCK || userInput === PAPER || userInput === SCISSORS) {
-//     break;
-//   }
-// } while (userInput !== ROCK || userInput !== PAPER || userInput !== SCISSORS);
-
-// while (userInput === ROCK || PAPER || SCISSORS) {
-//   let userInput = prompt(
-//     "Please type one move in capital letters: ROCK, PAPER or SCISSORS.",
-//     "ROCK"
-//   );
-
-//   userInput.toUpperCase().split(" ").join("");
-//   console.log(userInput);
-// }
-
 // console.log(userInput);
 // let computerMove = PAPER;
 // let taskThreeResult = getWinner(userInput, computerMove);
