@@ -193,6 +193,7 @@ do {
   userInput = prompt(
     "Please type one move in capital letters: ROCK, PAPER or SCISSORS."
   );
+  //Prints out users move for testing against computers move
   console.log(` this is original userInput ${userInput}`);
   userInput = userInput.toUpperCase().split(" ").join("");
   console.log(`this is edited userInput ${userInput}`);
@@ -216,7 +217,15 @@ function randomComputerMove() {
   return movesArray[randomNumber];
 }
 computerMove = randomComputerMove();
+//Prints out computers move for testing against users move
 console.log(`this is the computers move ${computerMove}`);
 
 let taskFourResult = getWinner(userInput, computerMove);
 let winnerAlertTaskFour = resultAlert(taskFourResult);
+
+//TASK 5
+
+/* 
+
+
+*/
