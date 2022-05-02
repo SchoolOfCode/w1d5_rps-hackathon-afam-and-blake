@@ -239,6 +239,10 @@ const ROCK = "ROCK";
 const PAPER = "PAPER";
 const SCISSORS = "SCISSORS";
 let userDecision = "Y";
+let gameCount = 0;
+let winCount = 0;
+let lossCount = 0;
+let drawCount = 0;
 
 while (userDecision === "Y") {
   //prompts player for input, puts it to Uppercase
@@ -248,22 +252,25 @@ while (userDecision === "Y") {
       "Please type one move in capital letters: ROCK, PAPER or SCISSORS."
     );
     //Prints out users move for testing against computers move
-    console.log(` this is original userInput ${userInput}`);
     userInput = userInput.toUpperCase().split(" ").join("");
-    console.log(`this is edited userInput ${userInput}`);
+    console.log(`You Chose: ${userInput}`);
   } while (userInput !== ROCK && userInput !== PAPER && userInput !== SCISSORS);
 
   //decides winner
   function getWinner(playerMove, computerMove) {
+    gameCount = gameCount + 1;
     if (playerMove === computerMove) {
+      drawCount = drawCount + 1;
       return 0;
     } else if (
       (playerMove === ROCK && computerMove === SCISSORS) ||
       (playerMove === PAPER && computerMove === ROCK) ||
       (playerMove === SCISSORS && computerMove === PAPER)
     ) {
+      winCount = winCount + 1;
       return 1;
     } else {
+      lossCount = lossCount + 1;
       return -1;
     }
   }
@@ -291,13 +298,28 @@ while (userDecision === "Y") {
 
   userDecision = prompt(
     `Would you like to continue playing - Press Y to continue or press any other key to exit`
-  );
+  ).toUpperCase();
+
+  function counterAlert() {
+    alert(`You have played a total of ${gameCount} games. You have won ${winCount} games, you have drawn ${drawCount} games and you have lost 
+    ${lossCount} games.`);
+  }
+  counterAlert();
 }
 
 //TASK 6
 /* 
- - Create functionality to track number of games, number of wins and number of losses
- - display this information after each round
+ - Create functionality to track number of games as well as number of wins, draws and losses
+   - count number of games
+   - count wins
+   - count draws
+   - count losses
+
+ - display this information after each round.
+  - use alert
 */
 
-// keep track means to store and add (array?)
+// solution: Created variables for gameCount, winCount, lossCount and drawCount and set them each to 0
+// at beginning of each round, game count goes up by 1 and then after each win, loss or draw, the varaible counter for the outcome will go up by 1
+
+// then simply used a template literal within the alert function to call in those variables to diplay the counters
