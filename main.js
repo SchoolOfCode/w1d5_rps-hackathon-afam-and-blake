@@ -243,10 +243,34 @@ let gameCount = 0;
 let winCount = 0;
 let lossCount = 0;
 let drawCount = 0;
+let gameUpdate;
+
+let userInput;
+let userName;
+
+// Task 7 code (do while loop)
+
+//takes prompt input and stores it into the userName variable
+userName = prompt(
+  "Rock, Paper and Scissors...Please enter your username.(NOTE: username must start with a letter and be no more than 10 characters long"
+);
+
+// capitilizes first letter of user input
+userName = userName.charAt(0).toUpperCase() + userName.slice(1);
+while (userName.length >= 11) {
+  alert("Your Username is too long - try again");
+  userName = prompt(
+    "Welcome to Rock, Paper and Scissors!! Please enter your username.(NOTE: your username MUST start with a capital letter and can only be up to a maximum of 10 characters long"
+  );
+  userName = userName.charAt(0).toUpperCase() + userName.slice(1);
+}
+console.log(userName);
+
+// if user enters more than 10 characters, they are prompted again
 
 while (userDecision === "Y") {
   //prompts player for input, puts it to Uppercase
-  let userInput;
+
   do {
     userInput = prompt(
       "Please type one move in capital letters: ROCK, PAPER or SCISSORS."
@@ -261,17 +285,17 @@ while (userDecision === "Y") {
     gameCount = gameCount + 1;
     if (playerMove === computerMove) {
       drawCount = drawCount + 1;
-      return 0;
+      return `You Drew this game ${userName}`;
     } else if (
       (playerMove === ROCK && computerMove === SCISSORS) ||
       (playerMove === PAPER && computerMove === ROCK) ||
       (playerMove === SCISSORS && computerMove === PAPER)
     ) {
       winCount = winCount + 1;
-      return 1;
+      return `You won this game ${userName}`;
     } else {
       lossCount = lossCount + 1;
-      return -1;
+      return `You lost this game ${userName}`;
     }
   }
 
@@ -291,7 +315,7 @@ while (userDecision === "Y") {
   //calls randomComputer move to generate the computers move each round
   computerMove = randomComputerMove();
   //Prints out computers move for testing against users move
-  console.log(`this is the computers move ${computerMove}`);
+  console.log(`The computer chose: ${computerMove}`);
 
   let taskFourResult = getWinner(userInput, computerMove);
   let winnerAlertTaskFour = resultAlert(taskFourResult);
@@ -301,10 +325,10 @@ while (userDecision === "Y") {
   ).toUpperCase();
 
   function counterAlert() {
-    alert(`You have played a total of ${gameCount} games. You have won ${winCount} games, you have drawn ${drawCount} games and you have lost 
-    ${lossCount} games.`);
+    alert(
+      `You have played a total of ${gameCount} games. You have won ${winCount} games, you have drawn ${drawCount} games and you have lost ${lossCount} games.`
+    );
   }
-  counterAlert();
 }
 
 //TASK 6
@@ -323,3 +347,16 @@ while (userDecision === "Y") {
 // at beginning of each round, game count goes up by 1 and then after each win, loss or draw, the varaible counter for the outcome will go up by 1
 
 // then simply used a template literal within the alert function to call in those variables to diplay the counters
+
+//TASK 7
+/* 
+* Create a username prompt
+* Store username from the prompt into a variable 
+* Include users name in the game messages
+* username can only be 10 characters max or fewer
+- deemed complete when a username cannot enter a username longer than 10 characters
+- bonus 1: username should start with letters only, no special characters
+- bonus 2: first letter of username should be capitilized.
+*/
+
+// SOLUTION:
