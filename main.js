@@ -250,13 +250,14 @@ let userName;
 
 // Task 7 code (do while loop)
 
-//takes prompt input and stores it into the userName variable
+//takes prompt input and stores it into the userName variableuserN
 userName = prompt(
   "Rock, Paper and Scissors...Please enter your username.(NOTE: username must start with a letter and be no more than 10 characters long"
 );
 
 // capitilizes first letter of user input
 userName = userName.charAt(0).toUpperCase() + userName.slice(1);
+
 while (userName.length >= 11) {
   alert("Your Username is too long - try again");
   userName = prompt(
@@ -358,5 +359,3 @@ while (userDecision === "Y") {
 - bonus 1: username should start with letters only, no special characters
 - bonus 2: first letter of username should be capitilized.
 */
-
-// SOLUTION:
