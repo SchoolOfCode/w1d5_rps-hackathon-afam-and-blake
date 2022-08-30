@@ -3,7 +3,7 @@ Task 1
 - set of if statements to determine rock paper scissors winner
 - The two moves stored in variables
 - Hard code each move in these variables
-- Complete when all permutationss of the combined moves have been handled.
+- Complete when all permutations of the combined moves have been handled.
 
 - Create constants with each move 
 - Create variables for player and computer move
@@ -232,7 +232,33 @@ let winnerAlertTaskFour = resultAlert(taskFourResult); */
    - press "N" to exit or "Y" to continue?
 */
 
-// Aftre much trial and error I figured out the easiest way to keep the game looping was to put all my previous coding for the game into a loop of its own
+//TASK 6
+/* 
+- Create functionality to track number of games as well as number of wins, draws and losses
+- count number of games
+- count wins
+- count draws
+- count losses
+
+- display this information after each round.
+- use alert
+*/
+
+// solution: Created variables for gameCount, winCount, lossCount and drawCount and set them each to 0
+// at beginning of each round, game count goes up by 1 and then after each win, loss or draw, the varaible counter for the outcome will go up by 1
+
+// then simply used a template literal within the alert function to call in those variables to diplay the counters
+
+//TASK 7
+/* 
+* Create a username prompt
+* Store username from the prompt into a variable 
+* Include users name in the game messages
+* username can only be 10 characters max or fewer
+- deemed complete when a username cannot enter a username longer than 10 characters
+*/
+
+// After much trial and error I figured out the easiest way to keep the game looping was to put all my previous coding for the game into a loop of its own
 
 //Variables
 const ROCK = "ROCK";
@@ -248,9 +274,7 @@ let gameUpdate;
 let userInput;
 let userName;
 
-// Task 7 code (do while loop)
-
-//takes prompt input and stores it into the userName variableuserN
+//takes prompt input and stores it into the userName variable userName
 userName = prompt(
   "Rock, Paper and Scissors...Please enter your username.(NOTE: username must start with a letter and be no more than 10 characters long"
 );
@@ -286,17 +310,17 @@ while (userDecision === "Y") {
     gameCount = gameCount + 1;
     if (playerMove === computerMove) {
       drawCount = drawCount + 1;
-      return `You Drew this game ${userName}`;
+      return `You Drew this game ${userName}!! You have won ${winCount} times, drawn ${drawCount} times and lost ${lossCount} times`;
     } else if (
       (playerMove === ROCK && computerMove === SCISSORS) ||
       (playerMove === PAPER && computerMove === ROCK) ||
       (playerMove === SCISSORS && computerMove === PAPER)
     ) {
       winCount = winCount + 1;
-      return `You won this game ${userName}`;
+      return `You won this game ${userName}!! You have won ${winCount} times, drawn ${drawCount} times and lost ${lossCount} times`;
     } else {
       lossCount = lossCount + 1;
-      return `You lost this game ${userName}`;
+      return `You lost this game ${userName}!! You have won ${winCount} times, drawn ${drawCount} times and lost ${lossCount} times`;
     }
   }
 
@@ -331,31 +355,3 @@ while (userDecision === "Y") {
     );
   }
 }
-
-//TASK 6
-/* 
- - Create functionality to track number of games as well as number of wins, draws and losses
-   - count number of games
-   - count wins
-   - count draws
-   - count losses
-
- - display this information after each round.
-  - use alert
-*/
-
-// solution: Created variables for gameCount, winCount, lossCount and drawCount and set them each to 0
-// at beginning of each round, game count goes up by 1 and then after each win, loss or draw, the varaible counter for the outcome will go up by 1
-
-// then simply used a template literal within the alert function to call in those variables to diplay the counters
-
-//TASK 7
-/* 
-* Create a username prompt
-* Store username from the prompt into a variable 
-* Include users name in the game messages
-* username can only be 10 characters max or fewer
-- deemed complete when a username cannot enter a username longer than 10 characters
-- bonus 1: username should start with letters only, no special characters
-- bonus 2: first letter of username should be capitilized.
-*/
