@@ -3,7 +3,7 @@ Task 1
 - set of if statements to determine rock paper scissors winner
 - The two moves stored in variables
 - Hard code each move in these variables
-- Complete when all permutationss of the combined moves have been handled.
+- Complete when all permutations of the combined moves have been handled.
 
 - Create constants with each move 
 - Create variables for player and computer move
@@ -166,12 +166,12 @@ How to get user input for player move
 - test
   changing results and testing
 */
-const ROCK = "ROCK";
+/* const ROCK = "ROCK";
 const PAPER = "PAPER";
-const SCISSORS = "SCISSORS";
+const SCISSORS = "SCISSORS"; */
 
 ////////////
-function getWinner(playerMove, computerMove) {
+/* function getWinner(playerMove, computerMove) {
   if (playerMove === computerMove) {
     return 0;
   } else if (
@@ -183,40 +183,175 @@ function getWinner(playerMove, computerMove) {
   } else {
     return -1;
   }
-}
-
+} */
 ///////////
 
-let userInput;
+/* let userInput;
 
 do {
   userInput = prompt(
     "Please type one move in capital letters: ROCK, PAPER or SCISSORS."
   );
+  //Prints out users move for testing against computers move
   console.log(` this is original userInput ${userInput}`);
   userInput = userInput.toUpperCase().split(" ").join("");
   console.log(`this is edited userInput ${userInput}`);
 } while (userInput !== ROCK && userInput !== PAPER && userInput !== SCISSORS);
 
-let computerMove;
+let computerMove; */
 // let taskThreeResult = getWinner(userInput, computerMove);
 // console.log(taskThreeResult);
-
+/* 
 function resultAlert(alertValue) {
   return alert(alertValue);
-}
+} */
 
 // let winnerAlertTaskThree = resultAlert(taskThreeResult);
 /////////////////////
 
-let movesArray = [ROCK, PAPER, SCISSORS];
+/* let movesArray = [ROCK, PAPER, SCISSORS];
 
 function randomComputerMove() {
   let randomNumber = Math.floor(Math.random() * 3);
   return movesArray[randomNumber];
 }
 computerMove = randomComputerMove();
+//Prints out computers move for testing against users move
 console.log(`this is the computers move ${computerMove}`);
 
 let taskFourResult = getWinner(userInput, computerMove);
-let winnerAlertTaskFour = resultAlert(taskFourResult);
+let winnerAlertTaskFour = resultAlert(taskFourResult); */
+
+//TASK 5
+/* 
+1) Enable user to continue playing game over and over without refreshing page
+   - would you like to continue playing?
+2) use a while loop to achieve this
+   - while "condition" will game continue or end?
+3) allow user the option to stop after each round
+   - press "N" to exit or "Y" to continue?
+*/
+
+//TASK 6
+/* 
+- Create functionality to track number of games as well as number of wins, draws and losses
+- count number of games
+- count wins
+- count draws
+- count losses
+
+- display this information after each round.
+- use alert
+*/
+
+// solution: Created variables for gameCount, winCount, lossCount and drawCount and set them each to 0
+// at beginning of each round, game count goes up by 1 and then after each win, loss or draw, the varaible counter for the outcome will go up by 1
+
+// then simply used a template literal within the alert function to call in those variables to diplay the counters
+
+//TASK 7
+/* 
+* Create a username prompt
+* Store username from the prompt into a variable 
+* Include users name in the game messages
+* username can only be 10 characters max or fewer
+- deemed complete when a username cannot enter a username longer than 10 characters
+*/
+
+// After much trial and error I figured out the easiest way to keep the game looping was to put all my previous coding for the game into a loop of its own
+
+//Variables
+const ROCK = "ROCK";
+const PAPER = "PAPER";
+const SCISSORS = "SCISSORS";
+let userDecision = "Y";
+let gameCount = 0;
+let winCount = 0;
+let lossCount = 0;
+let drawCount = 0;
+let gameUpdate;
+
+let userInput;
+let userName;
+
+//takes prompt input and stores it into the userName variable userName
+userName = prompt(
+  "Rock, Paper and Scissors...Please enter your username.(NOTE: username must start with a letter and be no more than 10 characters long"
+);
+
+// capitilizes first letter of user input
+userName = userName.charAt(0).toUpperCase() + userName.slice(1);
+
+while (userName.length >= 11) {
+  alert("Your Username is too long - try again");
+  userName = prompt(
+    "Welcome to Rock, Paper and Scissors!! Please enter your username.(NOTE: your username MUST start with a capital letter and can only be up to a maximum of 10 characters long"
+  );
+  userName = userName.charAt(0).toUpperCase() + userName.slice(1);
+}
+console.log(userName);
+
+// if user enters more than 10 characters, they are prompted again
+
+while (userDecision === "Y") {
+  //prompts player for input, puts it to Uppercase
+
+  do {
+    userInput = prompt(
+      "Please type one move in capital letters: ROCK, PAPER or SCISSORS."
+    );
+    //Prints out users move for testing against computers move
+    userInput = userInput.toUpperCase().split(" ").join("");
+    console.log(`You Chose: ${userInput}`);
+  } while (userInput !== ROCK && userInput !== PAPER && userInput !== SCISSORS);
+
+  //decides winner
+  function getWinner(playerMove, computerMove) {
+    gameCount = gameCount + 1;
+    if (playerMove === computerMove) {
+      drawCount = drawCount + 1;
+      return `You Drew this game ${userName}!! You have won ${winCount} times, drawn ${drawCount} times and lost ${lossCount} times`;
+    } else if (
+      (playerMove === ROCK && computerMove === SCISSORS) ||
+      (playerMove === PAPER && computerMove === ROCK) ||
+      (playerMove === SCISSORS && computerMove === PAPER)
+    ) {
+      winCount = winCount + 1;
+      return `You won this game ${userName}!! You have won ${winCount} times, drawn ${drawCount} times and lost ${lossCount} times`;
+    } else {
+      lossCount = lossCount + 1;
+      return `You lost this game ${userName}!! You have won ${winCount} times, drawn ${drawCount} times and lost ${lossCount} times`;
+    }
+  }
+
+  let computerMove;
+
+  // displays result
+  function resultAlert(alertValue) {
+    return alert(alertValue);
+  }
+
+  let movesArray = [ROCK, PAPER, SCISSORS];
+  //generates a randowm computer move by randomly choosing 1 of the values in the movesArray above
+  function randomComputerMove() {
+    let randomNumber = Math.floor(Math.random() * 3);
+    return movesArray[randomNumber];
+  }
+  //calls randomComputer move to generate the computers move each round
+  computerMove = randomComputerMove();
+  //Prints out computers move for testing against users move
+  console.log(`The computer chose: ${computerMove}`);
+
+  let taskFourResult = getWinner(userInput, computerMove);
+  let winnerAlertTaskFour = resultAlert(taskFourResult);
+
+  userDecision = prompt(
+    `Would you like to continue playing - Press Y to continue or press any other key to exit`
+  ).toUpperCase();
+
+  function counterAlert() {
+    alert(
+      `You have played a total of ${gameCount} games. You have won ${winCount} games, you have drawn ${drawCount} games and you have lost ${lossCount} games.`
+    );
+  }
+}
